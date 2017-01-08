@@ -7,7 +7,7 @@
     ProductSalesSummary.$inject = ['$resource'];
 
     function ProductSalesSummary ($resource) {
-        var resourceUrl =  'api/product-sales-summaries/:id';
+        var resourceUrl =  'api/sales-summaries/product/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
