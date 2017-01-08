@@ -67,7 +67,7 @@ class ProductSalesSummaryGatlingTest extends Simulation {
             .exec(http("Create new productSalesSummary")
             .post("/api/product-sales-summaries")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "year":"0", "month":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "year":"0", "month":"0", "totalAmount":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_productSalesSummary_url"))).exitHereIfFailed
             .pause(10)

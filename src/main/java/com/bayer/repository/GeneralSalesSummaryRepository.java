@@ -10,6 +10,6 @@ import java.util.List;
  * Spring Data JPA repository for the GeneralSalesSummary entity.
  */
 @SuppressWarnings("unused")
-public interface GeneralSalesSummaryRepository extends JpaRepository<GeneralSalesSummary,Long> {
-
+public interface GeneralSalesSummaryRepository extends JpaRepository<GeneralSalesSummary, Long> {
+	GeneralSalesSummary findOneByYearAndMonth(Integer year, Integer month);
 }

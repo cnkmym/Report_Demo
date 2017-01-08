@@ -126,6 +126,7 @@
                             return {
                                 year: null,
                                 month: null,
+                                totalAmount: null,
                                 id: null
                             };
                         }

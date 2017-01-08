@@ -1,16 +1,19 @@
 entity ProductSalesSummary {
 	year Integer required,
-    month Integer required 
+    month Integer required,
+		totalAmount BigDecimal
 }
 
 entity EmployeeSalesSummary {
 	year Integer required,
-    month Integer required 
+    month Integer required,
+		totalAmount BigDecimal
 }
 
 entity GeneralSalesSummary {
 	year Integer required,
-    month Integer required 
+    month Integer required,
+		totalAmount BigDecimal
 }
 
 entity SalesTransaction {

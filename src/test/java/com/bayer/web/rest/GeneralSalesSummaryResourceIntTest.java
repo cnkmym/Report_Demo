@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,6 +45,9 @@ public class GeneralSalesSummaryResourceIntTest {
 
     private static final Integer DEFAULT_MONTH = 1;
     private static final Integer UPDATED_MONTH = 2;
+
+    private static final BigDecimal DEFAULT_TOTAL_AMOUNT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_AMOUNT = new BigDecimal(2);
 
     @Inject
     private GeneralSalesSummaryRepository generalSalesSummaryRepository;
@@ -84,7 +88,8 @@ public class GeneralSalesSummaryResourceIntTest {
     public static GeneralSalesSummary createEntity(EntityManager em) {
         GeneralSalesSummary generalSalesSummary = new GeneralSalesSummary()
                 .year(DEFAULT_YEAR)
-                .month(DEFAULT_MONTH);
+                .month(DEFAULT_MONTH)
+                .totalAmount(DEFAULT_TOTAL_AMOUNT);
         return generalSalesSummary;
     }
 
@@ -112,6 +117,7 @@ public class GeneralSalesSummaryResourceIntTest {
         GeneralSalesSummary testGeneralSalesSummary = generalSalesSummaryList.get(generalSalesSummaryList.size() - 1);
         assertThat(testGeneralSalesSummary.getYear()).isEqualTo(DEFAULT_YEAR);
         assertThat(testGeneralSalesSummary.getMonth()).isEqualTo(DEFAULT_MONTH);
+        assertThat(testGeneralSalesSummary.getTotalAmount()).isEqualTo(DEFAULT_TOTAL_AMOUNT);
     }
 
     @Test
@@ -185,7 +191,8 @@ public class GeneralSalesSummaryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(generalSalesSummary.getId().intValue())))
             .andExpect(jsonPath("$.[*].year").value(hasItem(DEFAULT_YEAR)))
-            .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)));
+            .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)))
+            .andExpect(jsonPath("$.[*].totalAmount").value(hasItem(DEFAULT_TOTAL_AMOUNT.intValue())));
     }
 
     @Test
@@ -200,7 +207,8 @@ public class GeneralSalesSummaryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(generalSalesSummary.getId().intValue()))
             .andExpect(jsonPath("$.year").value(DEFAULT_YEAR))
-            .andExpect(jsonPath("$.month").value(DEFAULT_MONTH));
+            .andExpect(jsonPath("$.month").value(DEFAULT_MONTH))
+            .andExpect(jsonPath("$.totalAmount").value(DEFAULT_TOTAL_AMOUNT.intValue()));
     }
 
     @Test
@@ -222,7 +230,8 @@ public class GeneralSalesSummaryResourceIntTest {
         GeneralSalesSummary updatedGeneralSalesSummary = generalSalesSummaryRepository.findOne(generalSalesSummary.getId());
         updatedGeneralSalesSummary
                 .year(UPDATED_YEAR)
-                .month(UPDATED_MONTH);
+                .month(UPDATED_MONTH)
+                .totalAmount(UPDATED_TOTAL_AMOUNT);
         GeneralSalesSummaryDTO generalSalesSummaryDTO = generalSalesSummaryMapper.generalSalesSummaryToGeneralSalesSummaryDTO(updatedGeneralSalesSummary);
 
         restGeneralSalesSummaryMockMvc.perform(put("/api/general-sales-summaries")
@@ -236,6 +245,7 @@ public class GeneralSalesSummaryResourceIntTest {
         GeneralSalesSummary testGeneralSalesSummary = generalSalesSummaryList.get(generalSalesSummaryList.size() - 1);
         assertThat(testGeneralSalesSummary.getYear()).isEqualTo(UPDATED_YEAR);
         assertThat(testGeneralSalesSummary.getMonth()).isEqualTo(UPDATED_MONTH);
+        assertThat(testGeneralSalesSummary.getTotalAmount()).isEqualTo(UPDATED_TOTAL_AMOUNT);
     }
 
     @Test

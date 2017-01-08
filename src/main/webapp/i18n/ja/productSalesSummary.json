@@ -18,6 +18,7 @@
             },
             "year": "Year",
             "month": "Month",
+            "totalAmount": "Total Amount",
             "transactions": "Transactions",
             "product": "Product"
         }

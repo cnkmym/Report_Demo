@@ -21,6 +21,7 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="year"><span data-translate="reportApp.generalSalesSummary.year">Year</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="month"><span data-translate="reportApp.generalSalesSummary.month">Month</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalAmount"><span data-translate="reportApp.generalSalesSummary.totalAmount">Total Amount</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <td><a ui-sref="general-sales-summarymySuffix-detail({id:generalSalesSummary.id})">{{generalSalesSummary.id}}</a></td>
                     <td>{{generalSalesSummary.year}}</td>
                     <td>{{generalSalesSummary.month}}</td>
+                    <td>{{generalSalesSummary.totalAmount}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

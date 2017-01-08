@@ -2,6 +2,7 @@ package com.bayer.service.dto;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -19,6 +20,8 @@ public class GeneralSalesSummaryDTO implements Serializable {
 
     @NotNull
     private Integer month;
+
+    private BigDecimal totalAmount;
 
 
     public Long getId() {
@@ -41,6 +44,13 @@ public class GeneralSalesSummaryDTO implements Serializable {
 
     public void setMonth(Integer month) {
         this.month = month;
+    }
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     @Override
@@ -70,6 +80,7 @@ public class GeneralSalesSummaryDTO implements Serializable {
             "id=" + id +
             ", year='" + year + "'" +
             ", month='" + month + "'" +
+            ", totalAmount='" + totalAmount + "'" +
             '}';
     }
 }

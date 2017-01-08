@@ -28,6 +28,10 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "totalAmount",
+            "fieldType": "BigDecimal"
         }
     ],
     "changelogDate": "20170108131402",

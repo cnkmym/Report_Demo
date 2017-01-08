@@ -125,18 +125,4 @@ public class GeneralSalesSummaryResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    /**
-     * DELETE  /general-sales-summaries/:id : delete the "id" generalSalesSummary.
-     *
-     * @param id the id of the generalSalesSummaryDTO to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
-    @DeleteMapping("/general-sales-summaries/{id}")
-    @Timed
-    public ResponseEntity<Void> deleteGeneralSalesSummary(@PathVariable Long id) {
-        log.debug("REST request to delete GeneralSalesSummary : {}", id);
-        generalSalesSummaryRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("generalSalesSummary", id.toString())).build();
-    }
-
 }

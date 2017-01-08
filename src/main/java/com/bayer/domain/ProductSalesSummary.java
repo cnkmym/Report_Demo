@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -29,6 +30,9 @@ public class ProductSalesSummary implements Serializable {
     @NotNull
     @Column(name = "month", nullable = false)
     private Integer month;
+
+    @Column(name = "total_amount", precision=10, scale=2)
+    private BigDecimal totalAmount;
 
     @OneToMany(mappedBy = "productSalesSummary")
     @JsonIgnore
@@ -69,6 +73,19 @@ public class ProductSalesSummary implements Serializable {
 
     public void setMonth(Integer month) {
         this.month = month;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public ProductSalesSummary totalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+        return this;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public Set<SalesTransaction> getTransactions() {
@@ -135,6 +152,7 @@ public class ProductSalesSummary implements Serializable {
             "id=" + id +
             ", year='" + year + "'" +
             ", month='" + month + "'" +
+            ", totalAmount='" + totalAmount + "'" +
             '}';
     }
 }

@@ -21,6 +21,7 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="year"><span data-translate="reportApp.employeeSalesSummary.year">Year</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="month"><span data-translate="reportApp.employeeSalesSummary.month">Month</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalAmount"><span data-translate="reportApp.employeeSalesSummary.totalAmount">Total Amount</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="employeeId"><span data-translate="reportApp.employeeSalesSummary.employee">Employee</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -30,6 +31,7 @@
                     <td><a ui-sref="employee-sales-summarymySuffix-detail({id:employeeSalesSummary.id})">{{employeeSalesSummary.id}}</a></td>
                     <td>{{employeeSalesSummary.year}}</td>
                     <td>{{employeeSalesSummary.month}}</td>
+                    <td>{{employeeSalesSummary.totalAmount}}</td>
                     <td>
                         <a ui-sref="employeemySuffix-detail({id:employeeSalesSummary.employeeId})">{{employeeSalesSummary.employeeId}}</a>
                     </td>

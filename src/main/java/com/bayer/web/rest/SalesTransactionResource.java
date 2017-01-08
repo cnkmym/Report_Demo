@@ -113,18 +113,5 @@ public class SalesTransactionResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    /**
-     * DELETE  /sales-transactions/:id : delete the "id" salesTransaction.
-     *
-     * @param id the id of the salesTransactionDTO to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
-    @DeleteMapping("/sales-transactions/{id}")
-    @Timed
-    public ResponseEntity<Void> deleteSalesTransaction(@PathVariable Long id) {
-        log.debug("REST request to delete SalesTransaction : {}", id);
-        salesTransactionService.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("salesTransaction", id.toString())).build();
-    }
 
 }

@@ -1,15 +1,13 @@
 package com.bayer.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bayer.domain.Employee;
 import com.bayer.domain.EmployeeSalesSummary;
-
-import org.springframework.data.jpa.repository.*;
-
-import java.util.List;
 
 /**
  * Spring Data JPA repository for the EmployeeSalesSummary entity.
  */
-@SuppressWarnings("unused")
 public interface EmployeeSalesSummaryRepository extends JpaRepository<EmployeeSalesSummary,Long> {
-
+	EmployeeSalesSummary findOneByYearAndMonthAndEmployee(Integer year, Integer month, Employee employee);
 }

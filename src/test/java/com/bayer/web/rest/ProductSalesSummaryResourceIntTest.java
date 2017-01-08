@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,6 +45,9 @@ public class ProductSalesSummaryResourceIntTest {
 
     private static final Integer DEFAULT_MONTH = 1;
     private static final Integer UPDATED_MONTH = 2;
+
+    private static final BigDecimal DEFAULT_TOTAL_AMOUNT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_AMOUNT = new BigDecimal(2);
 
     @Inject
     private ProductSalesSummaryRepository productSalesSummaryRepository;
@@ -84,7 +88,8 @@ public class ProductSalesSummaryResourceIntTest {
     public static ProductSalesSummary createEntity(EntityManager em) {
         ProductSalesSummary productSalesSummary = new ProductSalesSummary()
                 .year(DEFAULT_YEAR)
-                .month(DEFAULT_MONTH);
+                .month(DEFAULT_MONTH)
+                .totalAmount(DEFAULT_TOTAL_AMOUNT);
         return productSalesSummary;
     }
 
@@ -112,6 +117,7 @@ public class ProductSalesSummaryResourceIntTest {
         ProductSalesSummary testProductSalesSummary = productSalesSummaryList.get(productSalesSummaryList.size() - 1);
         assertThat(testProductSalesSummary.getYear()).isEqualTo(DEFAULT_YEAR);
         assertThat(testProductSalesSummary.getMonth()).isEqualTo(DEFAULT_MONTH);
+        assertThat(testProductSalesSummary.getTotalAmount()).isEqualTo(DEFAULT_TOTAL_AMOUNT);
     }
 
     @Test
@@ -185,7 +191,8 @@ public class ProductSalesSummaryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(productSalesSummary.getId().intValue())))
             .andExpect(jsonPath("$.[*].year").value(hasItem(DEFAULT_YEAR)))
-            .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)));
+            .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)))
+            .andExpect(jsonPath("$.[*].totalAmount").value(hasItem(DEFAULT_TOTAL_AMOUNT.intValue())));
     }
 
     @Test
@@ -200,7 +207,8 @@ public class ProductSalesSummaryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(productSalesSummary.getId().intValue()))
             .andExpect(jsonPath("$.year").value(DEFAULT_YEAR))
-            .andExpect(jsonPath("$.month").value(DEFAULT_MONTH));
+            .andExpect(jsonPath("$.month").value(DEFAULT_MONTH))
+            .andExpect(jsonPath("$.totalAmount").value(DEFAULT_TOTAL_AMOUNT.intValue()));
     }
 
     @Test
@@ -222,7 +230,8 @@ public class ProductSalesSummaryResourceIntTest {
         ProductSalesSummary updatedProductSalesSummary = productSalesSummaryRepository.findOne(productSalesSummary.getId());
         updatedProductSalesSummary
                 .year(UPDATED_YEAR)
-                .month(UPDATED_MONTH);
+                .month(UPDATED_MONTH)
+                .totalAmount(UPDATED_TOTAL_AMOUNT);
         ProductSalesSummaryDTO productSalesSummaryDTO = productSalesSummaryMapper.productSalesSummaryToProductSalesSummaryDTO(updatedProductSalesSummary);
 
         restProductSalesSummaryMockMvc.perform(put("/api/product-sales-summaries")
@@ -236,6 +245,7 @@ public class ProductSalesSummaryResourceIntTest {
         ProductSalesSummary testProductSalesSummary = productSalesSummaryList.get(productSalesSummaryList.size() - 1);
         assertThat(testProductSalesSummary.getYear()).isEqualTo(UPDATED_YEAR);
         assertThat(testProductSalesSummary.getMonth()).isEqualTo(UPDATED_MONTH);
+        assertThat(testProductSalesSummary.getTotalAmount()).isEqualTo(UPDATED_TOTAL_AMOUNT);
     }
 
     @Test
