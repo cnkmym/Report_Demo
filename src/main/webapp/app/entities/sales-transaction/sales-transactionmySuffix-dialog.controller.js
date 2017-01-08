@@ -5,9 +5,9 @@
         .module('reportApp')
         .controller('SalesTransactionMySuffixDialogController', SalesTransactionMySuffixDialogController);
 
-    SalesTransactionMySuffixDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'SalesTransaction', 'ProductSalesSummary', 'EmployeeSalesSummary', 'GeneralSalesSummary', 'Employee', 'Product'];
+    SalesTransactionMySuffixDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'SalesTransaction', 'Employee', 'Product'];
 
-    function SalesTransactionMySuffixDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, SalesTransaction, ProductSalesSummary, EmployeeSalesSummary, GeneralSalesSummary, Employee, Product) {
+    function SalesTransactionMySuffixDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, SalesTransaction, Employee, Product) {
         var vm = this;
 
         vm.salesTransaction = entity;
@@ -15,9 +15,6 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.productsalessummaries = ProductSalesSummary.query();
-        vm.employeesalessummaries = EmployeeSalesSummary.query();
-        vm.generalsalessummaries = GeneralSalesSummary.query();
         vm.employees = Employee.query();
         vm.products = Product.query();
 

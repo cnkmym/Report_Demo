@@ -21,9 +21,6 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="transactionDate"><span data-translate="reportApp.salesTransaction.transactionDate">Transaction Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="transactionAmount"><span data-translate="reportApp.salesTransaction.transactionAmount">Transaction Amount</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="productSalesSummaryId"><span data-translate="reportApp.salesTransaction.productSalesSummary">Product Sales Summary</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="employeeSalesSummaryId"><span data-translate="reportApp.salesTransaction.employeeSalesSummary">Employee Sales Summary</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="generalSalesSummaryId"><span data-translate="reportApp.salesTransaction.generalSalesSummary">General Sales Summary</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="empolyeeId"><span data-translate="reportApp.salesTransaction.empolyee">Empolyee</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="productId"><span data-translate="reportApp.salesTransaction.product">Product</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -34,15 +31,6 @@
                     <td><a ui-sref="sales-transactionmySuffix-detail({id:salesTransaction.id})">{{salesTransaction.id}}</a></td>
                     <td>{{salesTransaction.transactionDate | date:'medium'}}</td>
                     <td>{{salesTransaction.transactionAmount}}</td>
-                    <td>
-                        <a ui-sref="product-sales-summarymySuffix-detail({id:salesTransaction.productSalesSummaryId})">{{salesTransaction.productSalesSummaryId}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="employee-sales-summarymySuffix-detail({id:salesTransaction.employeeSalesSummaryId})">{{salesTransaction.employeeSalesSummaryId}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="general-sales-summarymySuffix-detail({id:salesTransaction.generalSalesSummaryId})">{{salesTransaction.generalSalesSummaryId}}</a>
-                    </td>
                     <td>
                         <a ui-sref="employeemySuffix-detail({id:salesTransaction.empolyeeId})">{{salesTransaction.empolyeeId}}</a>
                     </td>

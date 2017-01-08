@@ -29,25 +29,6 @@
                     ng-model="vm.salesTransaction.transactionAmount"
                      />
         </div>
-
-        <div class="form-group">
-            <label data-translate="reportApp.salesTransaction.productSalesSummary" for="field_productSalesSummary">Product Sales Summary</label>
-            <select class="form-control" id="field_productSalesSummary" name="productSalesSummary" ng-model="vm.salesTransaction.productSalesSummaryId" ng-options="productSalesSummary.id as productSalesSummary.id for productSalesSummary in vm.productsalessummaries"            >
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="reportApp.salesTransaction.employeeSalesSummary" for="field_employeeSalesSummary">Employee Sales Summary</label>
-            <select class="form-control" id="field_employeeSalesSummary" name="employeeSalesSummary" ng-model="vm.salesTransaction.employeeSalesSummaryId" ng-options="employeeSalesSummary.id as employeeSalesSummary.id for employeeSalesSummary in vm.employeesalessummaries"            >
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label data-translate="reportApp.salesTransaction.generalSalesSummary" for="field_generalSalesSummary">General Sales Summary</label>
-            <select class="form-control" id="field_generalSalesSummary" name="generalSalesSummary" ng-model="vm.salesTransaction.generalSalesSummaryId" ng-options="generalSalesSummary.id as generalSalesSummary.id for generalSalesSummary in vm.generalsalessummaries"            >
-                <option value=""></option>
-            </select>
-        </div>
         <div class="form-group">
             <label data-translate="reportApp.salesTransaction.empolyee" for="field_empolyee">Empolyee</label>
             <select class="form-control" id="field_empolyee" name="empolyee" ng-model="vm.salesTransaction.empolyeeId" ng-options="employee.id as employee.id for employee in vm.employees"            >
