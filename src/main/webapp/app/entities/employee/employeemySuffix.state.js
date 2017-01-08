@@ -140,30 +140,6 @@
                     $state.go('^');
                 });
             }]
-        })
-        .state('employeemySuffix.delete', {
-            parent: 'employeemySuffix',
-            url: '/{id}/delete',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/employee/employeemySuffix-delete-dialog.html',
-                    controller: 'EmployeeMySuffixDeleteController',
-                    controllerAs: 'vm',
-                    size: 'md',
-                    resolve: {
-                        entity: ['Employee', function(Employee) {
-                            return Employee.get({id : $stateParams.id}).$promise;
-                        }]
-                    }
-                }).result.then(function() {
-                    $state.go('employeemySuffix', null, { reload: 'employeemySuffix' });
-                }, function() {
-                    $state.go('^');
-                });
-            }]
         });
     }
 

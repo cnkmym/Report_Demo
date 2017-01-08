@@ -140,30 +140,6 @@
                     $state.go('^');
                 });
             }]
-        })
-        .state('productmySuffix.delete', {
-            parent: 'productmySuffix',
-            url: '/{id}/delete',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/product/productmySuffix-delete-dialog.html',
-                    controller: 'ProductMySuffixDeleteController',
-                    controllerAs: 'vm',
-                    size: 'md',
-                    resolve: {
-                        entity: ['Product', function(Product) {
-                            return Product.get({id : $stateParams.id}).$promise;
-                        }]
-                    }
-                }).result.then(function() {
-                    $state.go('productmySuffix', null, { reload: 'productmySuffix' });
-                }, function() {
-                    $state.go('^');
-                });
-            }]
         });
     }
 

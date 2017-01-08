@@ -125,18 +125,4 @@ public class ProductResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    /**
-     * DELETE  /products/:id : delete the "id" product.
-     *
-     * @param id the id of the productDTO to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
-    @DeleteMapping("/products/{id}")
-    @Timed
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        log.debug("REST request to delete Product : {}", id);
-        productRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("product", id.toString())).build();
-    }
-
 }

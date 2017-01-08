@@ -44,52 +44,6 @@ public class GeneralSalesSummaryResource {
     private GeneralSalesSummaryMapper generalSalesSummaryMapper;
 
     /**
-     * POST  /general-sales-summaries : Create a new generalSalesSummary.
-     *
-     * @param generalSalesSummaryDTO the generalSalesSummaryDTO to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new generalSalesSummaryDTO, or with status 400 (Bad Request) if the generalSalesSummary has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PostMapping("/general-sales-summaries")
-    @Timed
-    public ResponseEntity<GeneralSalesSummaryDTO> createGeneralSalesSummary(@Valid @RequestBody GeneralSalesSummaryDTO generalSalesSummaryDTO) throws URISyntaxException {
-        log.debug("REST request to save GeneralSalesSummary : {}", generalSalesSummaryDTO);
-        if (generalSalesSummaryDTO.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("generalSalesSummary", "idexists", "A new generalSalesSummary cannot already have an ID")).body(null);
-        }
-        GeneralSalesSummary generalSalesSummary = generalSalesSummaryMapper.generalSalesSummaryDTOToGeneralSalesSummary(generalSalesSummaryDTO);
-        generalSalesSummary = generalSalesSummaryRepository.save(generalSalesSummary);
-        GeneralSalesSummaryDTO result = generalSalesSummaryMapper.generalSalesSummaryToGeneralSalesSummaryDTO(generalSalesSummary);
-        return ResponseEntity.created(new URI("/api/general-sales-summaries/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("generalSalesSummary", result.getId().toString()))
-            .body(result);
-    }
-
-    /**
-     * PUT  /general-sales-summaries : Updates an existing generalSalesSummary.
-     *
-     * @param generalSalesSummaryDTO the generalSalesSummaryDTO to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated generalSalesSummaryDTO,
-     * or with status 400 (Bad Request) if the generalSalesSummaryDTO is not valid,
-     * or with status 500 (Internal Server Error) if the generalSalesSummaryDTO couldnt be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PutMapping("/general-sales-summaries")
-    @Timed
-    public ResponseEntity<GeneralSalesSummaryDTO> updateGeneralSalesSummary(@Valid @RequestBody GeneralSalesSummaryDTO generalSalesSummaryDTO) throws URISyntaxException {
-        log.debug("REST request to update GeneralSalesSummary : {}", generalSalesSummaryDTO);
-        if (generalSalesSummaryDTO.getId() == null) {
-            return createGeneralSalesSummary(generalSalesSummaryDTO);
-        }
-        GeneralSalesSummary generalSalesSummary = generalSalesSummaryMapper.generalSalesSummaryDTOToGeneralSalesSummary(generalSalesSummaryDTO);
-        generalSalesSummary = generalSalesSummaryRepository.save(generalSalesSummary);
-        GeneralSalesSummaryDTO result = generalSalesSummaryMapper.generalSalesSummaryToGeneralSalesSummaryDTO(generalSalesSummary);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("generalSalesSummary", generalSalesSummaryDTO.getId().toString()))
-            .body(result);
-    }
-
-    /**
      * GET  /general-sales-summaries : get all the generalSalesSummaries.
      *
      * @param pageable the pagination information

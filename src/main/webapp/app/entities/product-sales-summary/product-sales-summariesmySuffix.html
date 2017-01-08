@@ -1,18 +1,6 @@
 <div>
     <h2 data-translate="reportApp.productSalesSummary.home.title">Product Sales Summaries</h2>
     <jhi-alert></jhi-alert>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="product-sales-summarymySuffix.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="reportApp.productSalesSummary.home.createLabel">
-                        Create new Product Sales Summary
-                    </span>
-                </button>
-            </div>
-        </div>
-    </div>
     <br/>
     <div class="table-responsive">
         <table class="jh-table table table-striped">
@@ -42,18 +30,6 @@
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="product-sales-summarymySuffix.edit({id:productSalesSummary.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="product-sales-summarymySuffix.delete({id:productSalesSummary.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
                             </button>
                         </div>
                     </td>

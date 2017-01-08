@@ -44,52 +44,6 @@ public class ProductSalesSummaryResource {
     private ProductSalesSummaryMapper productSalesSummaryMapper;
 
     /**
-     * POST  /product-sales-summaries : Create a new productSalesSummary.
-     *
-     * @param productSalesSummaryDTO the productSalesSummaryDTO to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new productSalesSummaryDTO, or with status 400 (Bad Request) if the productSalesSummary has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PostMapping("/product-sales-summaries")
-    @Timed
-    public ResponseEntity<ProductSalesSummaryDTO> createProductSalesSummary(@Valid @RequestBody ProductSalesSummaryDTO productSalesSummaryDTO) throws URISyntaxException {
-        log.debug("REST request to save ProductSalesSummary : {}", productSalesSummaryDTO);
-        if (productSalesSummaryDTO.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("productSalesSummary", "idexists", "A new productSalesSummary cannot already have an ID")).body(null);
-        }
-        ProductSalesSummary productSalesSummary = productSalesSummaryMapper.productSalesSummaryDTOToProductSalesSummary(productSalesSummaryDTO);
-        productSalesSummary = productSalesSummaryRepository.save(productSalesSummary);
-        ProductSalesSummaryDTO result = productSalesSummaryMapper.productSalesSummaryToProductSalesSummaryDTO(productSalesSummary);
-        return ResponseEntity.created(new URI("/api/product-sales-summaries/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("productSalesSummary", result.getId().toString()))
-            .body(result);
-    }
-
-    /**
-     * PUT  /product-sales-summaries : Updates an existing productSalesSummary.
-     *
-     * @param productSalesSummaryDTO the productSalesSummaryDTO to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated productSalesSummaryDTO,
-     * or with status 400 (Bad Request) if the productSalesSummaryDTO is not valid,
-     * or with status 500 (Internal Server Error) if the productSalesSummaryDTO couldnt be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PutMapping("/product-sales-summaries")
-    @Timed
-    public ResponseEntity<ProductSalesSummaryDTO> updateProductSalesSummary(@Valid @RequestBody ProductSalesSummaryDTO productSalesSummaryDTO) throws URISyntaxException {
-        log.debug("REST request to update ProductSalesSummary : {}", productSalesSummaryDTO);
-        if (productSalesSummaryDTO.getId() == null) {
-            return createProductSalesSummary(productSalesSummaryDTO);
-        }
-        ProductSalesSummary productSalesSummary = productSalesSummaryMapper.productSalesSummaryDTOToProductSalesSummary(productSalesSummaryDTO);
-        productSalesSummary = productSalesSummaryRepository.save(productSalesSummary);
-        ProductSalesSummaryDTO result = productSalesSummaryMapper.productSalesSummaryToProductSalesSummaryDTO(productSalesSummary);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("productSalesSummary", productSalesSummaryDTO.getId().toString()))
-            .body(result);
-    }
-
-    /**
      * GET  /product-sales-summaries : get all the productSalesSummaries.
      *
      * @param pageable the pagination information
@@ -123,20 +77,6 @@ public class ProductSalesSummaryResource {
                 result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    /**
-     * DELETE  /product-sales-summaries/:id : delete the "id" productSalesSummary.
-     *
-     * @param id the id of the productSalesSummaryDTO to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
-    @DeleteMapping("/product-sales-summaries/{id}")
-    @Timed
-    public ResponseEntity<Void> deleteProductSalesSummary(@PathVariable Long id) {
-        log.debug("REST request to delete ProductSalesSummary : {}", id);
-        productSalesSummaryRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("productSalesSummary", id.toString())).build();
     }
 
 }
