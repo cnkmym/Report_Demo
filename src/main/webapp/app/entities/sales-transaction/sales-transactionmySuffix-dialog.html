@@ -29,15 +29,16 @@
                     ng-model="vm.salesTransaction.transactionAmount"
                      />
         </div>
+
         <div class="form-group">
             <label data-translate="reportApp.salesTransaction.empolyee" for="field_empolyee">Empolyee</label>
-            <select class="form-control" id="field_empolyee" name="empolyee" ng-model="vm.salesTransaction.empolyeeId" ng-options="employee.id as employee.id for employee in vm.employees"            >
+            <select class="form-control" id="field_empolyee" name="empolyee" ng-model="vm.salesTransaction.empolyeeId" ng-options="employee.id as employee.employeeName for employee in vm.employees"            >
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="reportApp.salesTransaction.product" for="field_product">Product</label>
-            <select class="form-control" id="field_product" name="product" ng-model="vm.salesTransaction.productId" ng-options="product.id as product.id for product in vm.products"            >
+            <select class="form-control" id="field_product" name="product" ng-model="vm.salesTransaction.productId" ng-options="product.id as product.productName for product in vm.products"            >
                 <option value=""></option>
             </select>
         </div>

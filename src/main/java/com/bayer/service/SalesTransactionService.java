@@ -145,6 +145,9 @@ public class SalesTransactionService {
 	}
 
 	private void updateEmployeeSummary(SalesTransaction salesTransaction, Integer year, Integer month) {
+		if (salesTransaction.getEmpolyee() == null){
+			return;
+		}
 		EmployeeSalesSummary summary = employeeSummaryRepository.findOneByYearAndMonthAndEmployee(year, month,
 				salesTransaction.getEmpolyee());
 		if (summary == null) {
@@ -170,6 +173,9 @@ public class SalesTransactionService {
 	}
 
 	private void updateProductSummary(SalesTransaction salesTransaction, Integer year, Integer month) {
+		if (salesTransaction.getProduct() == null){
+			return;
+		}
 		ProductSalesSummary summary = productSummaryRepository.findOneByYearAndMonthAndProduct(year, month,
 				salesTransaction.getProduct());
 		if (summary == null) {
