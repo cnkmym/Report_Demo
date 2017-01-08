@@ -1,0 +1,25 @@
+{
+    "reportApp": {
+        "productSalesSummary" : {
+            "home": {
+                "title": "ProductSalesSummaries",
+                "createLabel": "Product Sales Summary を追加",
+                "createOrEditLabel": "Product Sales Summaryを追加または編集",
+                "search": "Search for Product Sales Summary"
+            },
+            "created": "A new Product Sales Summary is created with identifier {{ param }}",
+            "updated": "A Product Sales Summary is updated with identifier {{ param }}",
+            "deleted": "A Product Sales Summary is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Product Sales Summary {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Product Sales Summary"
+            },
+            "year": "Year",
+            "month": "Month",
+            "transactions": "Transactions",
+            "product": "Product"
+        }
+    }
+}

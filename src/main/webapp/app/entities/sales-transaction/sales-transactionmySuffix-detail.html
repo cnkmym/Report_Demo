@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="reportApp.salesTransaction.detail.title">Sales Transaction</span> {{vm.salesTransaction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="reportApp.salesTransaction.transactionDate">Transaction Date</span></dt>
+        <dd>
+            <span>{{vm.salesTransaction.transactionDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="reportApp.salesTransaction.transactionAmount">Transaction Amount</span></dt>
+        <dd>
+            <span>{{vm.salesTransaction.transactionAmount}}</span>
+        </dd>
+        <dt><span data-translate="reportApp.salesTransaction.productSalesSummary">Product Sales Summary</span></dt>
+        <dd>
+            <a ui-sref="product-sales-summarymySuffix-detail({id:vm.salesTransaction.productSalesSummaryId})">{{vm.salesTransaction.productSalesSummaryId}}</a>
+        </dd>
+        <dt><span data-translate="reportApp.salesTransaction.employeeSalesSummary">Employee Sales Summary</span></dt>
+        <dd>
+            <a ui-sref="employee-sales-summarymySuffix-detail({id:vm.salesTransaction.employeeSalesSummaryId})">{{vm.salesTransaction.employeeSalesSummaryId}}</a>
+        </dd>
+        <dt><span data-translate="reportApp.salesTransaction.generalSalesSummary">General Sales Summary</span></dt>
+        <dd>
+            <a ui-sref="general-sales-summarymySuffix-detail({id:vm.salesTransaction.generalSalesSummaryId})">{{vm.salesTransaction.generalSalesSummaryId}}</a>
+        </dd>
+        <dt><span data-translate="reportApp.salesTransaction.empolyee">Empolyee</span></dt>
+        <dd>
+            <a ui-sref="employeemySuffix-detail({id:vm.salesTransaction.empolyeeId})">{{vm.salesTransaction.empolyeeId}}</a>
+        </dd>
+        <dt><span data-translate="reportApp.salesTransaction.product">Product</span></dt>
+        <dd>
+            <a ui-sref="productmySuffix-detail({id:vm.salesTransaction.productId})">{{vm.salesTransaction.productId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="sales-transactionmySuffix-detail.edit({id:vm.salesTransaction.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

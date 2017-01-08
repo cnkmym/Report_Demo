@@ -1,0 +1,28 @@
+{
+    "reportApp": {
+        "salesTransaction" : {
+            "home": {
+                "title": "SalesTransactions",
+                "createLabel": "Sales Transaction を追加",
+                "createOrEditLabel": "Sales Transactionを追加または編集",
+                "search": "Search for Sales Transaction"
+            },
+            "created": "A new Sales Transaction is created with identifier {{ param }}",
+            "updated": "A Sales Transaction is updated with identifier {{ param }}",
+            "deleted": "A Sales Transaction is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Sales Transaction {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Sales Transaction"
+            },
+            "transactionDate": "Transaction Date",
+            "transactionAmount": "Transaction Amount",
+            "productSalesSummary": "Product Sales Summary",
+            "employeeSalesSummary": "Employee Sales Summary",
+            "generalSalesSummary": "General Sales Summary",
+            "empolyee": "Empolyee",
+            "product": "Product"
+        }
+    }
+}

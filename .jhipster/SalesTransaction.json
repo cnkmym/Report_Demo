@@ -1,0 +1,51 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "productSalesSummary",
+            "otherEntityName": "productSalesSummary",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "employeeSalesSummary",
+            "otherEntityName": "employeeSalesSummary",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "generalSalesSummary",
+            "otherEntityName": "generalSalesSummary",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "empolyee",
+            "otherEntityName": "employee",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "transactionDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "transactionAmount",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "changelogDate": "20170108131404",
+    "entityTableName": "sales_transaction",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularJSSuffix": "mySuffix"
+}

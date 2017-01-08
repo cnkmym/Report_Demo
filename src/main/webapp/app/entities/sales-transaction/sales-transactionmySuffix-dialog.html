@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySalesTransactionLabel" data-translate="reportApp.salesTransaction.home.createOrEditLabel">Create or edit a Sales Transaction</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.salesTransaction.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.salesTransaction.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="reportApp.salesTransaction.transactionDate" for="field_transactionDate">Transaction Date</label>
+                <div class="input-group">
+                    <input id="field_transactionDate" type="text" class="form-control" name="transactionDate" datetime-picker="{{dateformat}}" ng-model="vm.salesTransaction.transactionDate" is-open="vm.datePickerOpenStatus.transactionDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('transactionDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="reportApp.salesTransaction.transactionAmount" for="field_transactionAmount">Transaction Amount</label>
+            <input type="number" class="form-control" name="transactionAmount" id="field_transactionAmount"
+                    ng-model="vm.salesTransaction.transactionAmount"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="reportApp.salesTransaction.productSalesSummary" for="field_productSalesSummary">Product Sales Summary</label>
+            <select class="form-control" id="field_productSalesSummary" name="productSalesSummary" ng-model="vm.salesTransaction.productSalesSummaryId" ng-options="productSalesSummary.id as productSalesSummary.id for productSalesSummary in vm.productsalessummaries"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="reportApp.salesTransaction.employeeSalesSummary" for="field_employeeSalesSummary">Employee Sales Summary</label>
+            <select class="form-control" id="field_employeeSalesSummary" name="employeeSalesSummary" ng-model="vm.salesTransaction.employeeSalesSummaryId" ng-options="employeeSalesSummary.id as employeeSalesSummary.id for employeeSalesSummary in vm.employeesalessummaries"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="reportApp.salesTransaction.generalSalesSummary" for="field_generalSalesSummary">General Sales Summary</label>
+            <select class="form-control" id="field_generalSalesSummary" name="generalSalesSummary" ng-model="vm.salesTransaction.generalSalesSummaryId" ng-options="generalSalesSummary.id as generalSalesSummary.id for generalSalesSummary in vm.generalsalessummaries"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="reportApp.salesTransaction.empolyee" for="field_empolyee">Empolyee</label>
+            <select class="form-control" id="field_empolyee" name="empolyee" ng-model="vm.salesTransaction.empolyeeId" ng-options="employee.id as employee.id for employee in vm.employees"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="reportApp.salesTransaction.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" ng-model="vm.salesTransaction.productId" ng-options="product.id as product.id for product in vm.products"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

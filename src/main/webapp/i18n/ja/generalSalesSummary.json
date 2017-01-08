@@ -1,0 +1,24 @@
+{
+    "reportApp": {
+        "generalSalesSummary" : {
+            "home": {
+                "title": "GeneralSalesSummaries",
+                "createLabel": "General Sales Summary を追加",
+                "createOrEditLabel": "General Sales Summaryを追加または編集",
+                "search": "Search for General Sales Summary"
+            },
+            "created": "A new General Sales Summary is created with identifier {{ param }}",
+            "updated": "A General Sales Summary is updated with identifier {{ param }}",
+            "deleted": "A General Sales Summary is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "General Sales Summary {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "General Sales Summary"
+            },
+            "year": "Year",
+            "month": "Month",
+            "transactions": "Transactions"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+entity ProductSalesSummary {
+	year Integer required,
+    month Integer required 
+}
+
+entity EmployeeSalesSummary {
+	year Integer required,
+    month Integer required 
+}
+
+entity GeneralSalesSummary {
+	year Integer required,
+    month Integer required 
+}
+
+entity SalesTransaction {
+    transactionDate ZonedDateTime,
+    transactionAmount BigDecimal,
+}
+
+entity Product {
+	productName String required
+}
+
+entity Employee {
+	employeeName String required
+}
+
+relationship OneToMany {
+    GeneralSalesSummary{transactions} to SalesTransaction,
+    EmployeeSalesSummary{transactions} to SalesTransaction,
+    ProductSalesSummary{transactions} to SalesTransaction
+}
+
+relationship ManyToOne {
+	SalesTransaction{empolyee} to Employee,
+    SalesTransaction{product} to Product,
+    EmployeeSalesSummary{employee} to Employee,
+    ProductSalesSummary{product} to Product
+}
+
+// Set pagination options
+paginate SalesTransaction, Employee, Product with infinite-scroll
+paginate GeneralSalesSummary, EmployeeSalesSummary,ProductSalesSummary with pagination
+
+dto * with mapstruct
+
+service SalesTransaction with serviceClass
+
+// Set an angular suffix
+angularSuffix * with mySuffix

@@ -1,0 +1,25 @@
+{
+    "reportApp": {
+        "employeeSalesSummary" : {
+            "home": {
+                "title": "EmployeeSalesSummaries",
+                "createLabel": "Employee Sales Summary を追加",
+                "createOrEditLabel": "Employee Sales Summaryを追加または編集",
+                "search": "Search for Employee Sales Summary"
+            },
+            "created": "A new Employee Sales Summary is created with identifier {{ param }}",
+            "updated": "A Employee Sales Summary is updated with identifier {{ param }}",
+            "deleted": "A Employee Sales Summary is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Employee Sales Summary {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Employee Sales Summary"
+            },
+            "year": "Year",
+            "month": "Month",
+            "transactions": "Transactions",
+            "employee": "Employee"
+        }
+    }
+}

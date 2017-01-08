@@ -1,0 +1,22 @@
+{
+    "reportApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "Product を追加",
+                "createOrEditLabel": "Productを追加または編集",
+                "search": "Search for Product"
+            },
+            "created": "A new Product is created with identifier {{ param }}",
+            "updated": "A Product is updated with identifier {{ param }}",
+            "deleted": "A Product is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Product {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "productName": "Product Name"
+        }
+    }
+}
