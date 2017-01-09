@@ -1,0 +1,47 @@
+<div>
+    <h2 data-translate="reportApp.graph.demo.home.title">Angular-D3 Library Demonstration</h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <nvd3 options='vm.graphOptions' data='vm.graphData'></nvd3>
+    <!--
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="year"><span data-translate="reportApp.productSalesSummary.year">Year</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="month"><span data-translate="reportApp.productSalesSummary.month">Month</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalAmount"><span data-translate="reportApp.productSalesSummary.totalAmount">Total Amount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="productId"><span data-translate="reportApp.productSalesSummary.product">Product</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="productSalesSummary in vm.productSalesSummaries track by productSalesSummary.id">
+                    <td><a ui-sref="product-sales-summarymySuffix-detail({id:productSalesSummary.id})">{{productSalesSummary.id}}</a></td>
+                    <td>{{productSalesSummary.year}}</td>
+                    <td>{{productSalesSummary.month}}</td>
+                    <td>{{productSalesSummary.totalAmount}}</td>
+                    <td>
+                        <a ui-sref="productmySuffix-detail({id:productSalesSummary.productId})">{{productSalesSummary.productId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="product-sales-summarymySuffix-detail({id:productSalesSummary.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+  -->
+</div>

@@ -12,6 +12,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
@@ -67,6 +68,10 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script> <!-- or use another assembly -->
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -93,43 +98,39 @@
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
-    <script src="app/entities/sales-transaction/sales-transactionmySuffix-dialog.controller.js"></script>
     <script src="app/entities/sales-transaction/sales-transactionmySuffix-detail.controller.js"></script>
-    <script src="app/entities/sales-transaction/sales-transactionmySuffix-delete-dialog.controller.js"></script>
     <script src="app/entities/sales-transaction/sales-transactionmySuffix.state.js"></script>
     <script src="app/entities/sales-transaction/sales-transactionmySuffix.controller.js"></script>
     <script src="app/entities/sales-transaction/sales-transaction.service.js"></script>
-    <script src="app/entities/product-sales-summary/product-sales-summarymySuffix-dialog.controller.js"></script>
     <script src="app/entities/product-sales-summary/product-sales-summarymySuffix-detail.controller.js"></script>
-    <script src="app/entities/product-sales-summary/product-sales-summarymySuffix-delete-dialog.controller.js"></script>
     <script src="app/entities/product-sales-summary/product-sales-summarymySuffix.state.js"></script>
     <script src="app/entities/product-sales-summary/product-sales-summarymySuffix.controller.js"></script>
     <script src="app/entities/product-sales-summary/product-sales-summary.service.js"></script>
     <script src="app/entities/product/productmySuffix-dialog.controller.js"></script>
     <script src="app/entities/product/productmySuffix-detail.controller.js"></script>
-    <script src="app/entities/product/productmySuffix-delete-dialog.controller.js"></script>
     <script src="app/entities/product/productmySuffix.state.js"></script>
     <script src="app/entities/product/productmySuffix.controller.js"></script>
     <script src="app/entities/product/product.service.js"></script>
-    <script src="app/entities/general-sales-summary/general-sales-summarymySuffix-dialog.controller.js"></script>
     <script src="app/entities/general-sales-summary/general-sales-summarymySuffix-detail.controller.js"></script>
-    <script src="app/entities/general-sales-summary/general-sales-summarymySuffix-delete-dialog.controller.js"></script>
     <script src="app/entities/general-sales-summary/general-sales-summarymySuffix.state.js"></script>
     <script src="app/entities/general-sales-summary/general-sales-summarymySuffix.controller.js"></script>
     <script src="app/entities/general-sales-summary/general-sales-summary.service.js"></script>
     <script src="app/entities/entity.state.js"></script>
-    <script src="app/entities/employee-sales-summary/employee-sales-summarymySuffix-dialog.controller.js"></script>
     <script src="app/entities/employee-sales-summary/employee-sales-summarymySuffix-detail.controller.js"></script>
-    <script src="app/entities/employee-sales-summary/employee-sales-summarymySuffix-delete-dialog.controller.js"></script>
     <script src="app/entities/employee-sales-summary/employee-sales-summarymySuffix.state.js"></script>
     <script src="app/entities/employee-sales-summary/employee-sales-summarymySuffix.controller.js"></script>
     <script src="app/entities/employee-sales-summary/employee-sales-summary.service.js"></script>
     <script src="app/entities/employee/employeemySuffix-dialog.controller.js"></script>
     <script src="app/entities/employee/employeemySuffix-detail.controller.js"></script>
-    <script src="app/entities/employee/employeemySuffix-delete-dialog.controller.js"></script>
     <script src="app/entities/employee/employeemySuffix.state.js"></script>
     <script src="app/entities/employee/employeemySuffix.controller.js"></script>
     <script src="app/entities/employee/employee.service.js"></script>
+    <!-- Graphical Pages come here -->
+    <script src="app/graphs/graph.state.js"></script>
+    <script src="app/graphs/nvd3-demo/nvd3-demo.state.js"></script>
+    <script src="app/graphs/nvd3-demo/nvd3-demo.controller.js"></script>
+    <script src="app/graphs/nvd3-demo/nvd3-demo.service.js"></script>
+
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>

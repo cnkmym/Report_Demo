@@ -1,0 +1,11 @@
+{
+  "reportApp": {
+    "graph": {
+      "demo": {
+        "home": {
+          "title": "Angular-D3 Demonstration"
+        }
+      }
+    }
+  }
+}
