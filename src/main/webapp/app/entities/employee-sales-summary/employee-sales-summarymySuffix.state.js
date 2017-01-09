@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/employee-sales-summarymySuffix?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: [],//['ROLE_USER'],
                 pageTitle: 'reportApp.employeeSalesSummary.home.title'
             },
             views: {
@@ -55,7 +55,7 @@
             parent: 'entity',
             url: '/employee-sales-summarymySuffix/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: [],//['ROLE_USER'],
                 pageTitle: 'reportApp.employeeSalesSummary.detail.title'
             },
             views: {

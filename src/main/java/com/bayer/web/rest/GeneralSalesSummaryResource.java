@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  * REST controller for managing GeneralSalesSummary.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/sales-summaries")
 public class GeneralSalesSummaryResource {
 
     private final Logger log = LoggerFactory.getLogger(GeneralSalesSummaryResource.class);
@@ -50,13 +50,13 @@ public class GeneralSalesSummaryResource {
      * @return the ResponseEntity with status 200 (OK) and the list of generalSalesSummaries in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
-    @GetMapping("/general-sales-summaries")
+    @GetMapping("/general")
     @Timed
     public ResponseEntity<List<GeneralSalesSummaryDTO>> getAllGeneralSalesSummaries(@ApiParam Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of GeneralSalesSummaries");
         Page<GeneralSalesSummary> page = generalSalesSummaryRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/general-sales-summaries");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sales-summaries/general");
         return new ResponseEntity<>(generalSalesSummaryMapper.generalSalesSummariesToGeneralSalesSummaryDTOs(page.getContent()), headers, HttpStatus.OK);
     }
 
@@ -66,7 +66,7 @@ public class GeneralSalesSummaryResource {
      * @param id the id of the generalSalesSummaryDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the generalSalesSummaryDTO, or with status 404 (Not Found)
      */
-    @GetMapping("/general-sales-summaries/{id}")
+    @GetMapping("/general/{id}")
     @Timed
     public ResponseEntity<GeneralSalesSummaryDTO> getGeneralSalesSummary(@PathVariable Long id) {
         log.debug("REST request to get GeneralSalesSummary : {}", id);

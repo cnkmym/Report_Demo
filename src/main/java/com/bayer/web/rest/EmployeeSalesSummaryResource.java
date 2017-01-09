@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  * REST controller for managing EmployeeSalesSummary.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/sales-summaries")
 public class EmployeeSalesSummaryResource {
 
     private final Logger log = LoggerFactory.getLogger(EmployeeSalesSummaryResource.class);
@@ -50,13 +50,13 @@ public class EmployeeSalesSummaryResource {
      * @return the ResponseEntity with status 200 (OK) and the list of employeeSalesSummaries in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
-    @GetMapping("/employee-sales-summaries")
+    @GetMapping("/employee")
     @Timed
     public ResponseEntity<List<EmployeeSalesSummaryDTO>> getAllEmployeeSalesSummaries(@ApiParam Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of EmployeeSalesSummaries");
         Page<EmployeeSalesSummary> page = employeeSalesSummaryRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/employee-sales-summaries");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sales-summaries/employee");
         return new ResponseEntity<>(employeeSalesSummaryMapper.employeeSalesSummariesToEmployeeSalesSummaryDTOs(page.getContent()), headers, HttpStatus.OK);
     }
 
@@ -66,7 +66,7 @@ public class EmployeeSalesSummaryResource {
      * @param id the id of the employeeSalesSummaryDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the employeeSalesSummaryDTO, or with status 404 (Not Found)
      */
-    @GetMapping("/employee-sales-summaries/{id}")
+    @GetMapping("/sales-summaries/employee/{id}")
     @Timed
     public ResponseEntity<EmployeeSalesSummaryDTO> getEmployeeSalesSummary(@PathVariable Long id) {
         log.debug("REST request to get EmployeeSalesSummary : {}", id);

@@ -16,4 +16,10 @@
     <include file="classpath:config/liquibase/changelog/20170108131402_added_entity_constraints_EmployeeSalesSummary.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170108131404_added_entity_constraints_SalesTransaction.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+
+    <include file="classpath:config/liquibase/changelog/20170109131405_load_test_data_Product.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170109131406_load_test_data_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170109131407_load_test_data_SalesSummary.xml" relativeToChangelogFile="false"/>
+    <!-- load initial test data  -->
+
 </databaseChangeLog>
