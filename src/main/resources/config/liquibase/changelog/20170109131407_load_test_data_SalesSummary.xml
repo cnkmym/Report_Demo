@@ -5,24 +5,25 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
 	<!-- Added the entity Employee. -->
-	<changeSet id="20170109131407-1" author="cnkmym">
-    <loadData encoding="UTF-8"
-      file="config/liquibase/test_data_salesTransactions.csv" separator=";"
-      tableName="sales_transaction" />
-	</changeSet>
-  <changeSet id="20170109131407-2" author="cnkmym">
+
+  <changeSet id="20170109131407-1" author="cnkmym">
 		<loadData encoding="UTF-8"
 			file="config/liquibase/test_data_summary_general.csv" separator=";"
 			tableName="general_sales_summary" />
 	</changeSet>
-  <changeSet id="20170109131407-3" author="cnkmym">
+  <changeSet id="20170109131407-2" author="cnkmym">
 		<loadData encoding="UTF-8"
 			file="config/liquibase/test_data_summary_products.csv" separator=";"
 			tableName="product_sales_summary" />
 	</changeSet>
-  <changeSet id="20170109131407-4" author="cnkmym">
+  <changeSet id="20170109131407-3" author="cnkmym">
 		<loadData encoding="UTF-8"
 			file="config/liquibase/test_data_summary_employees.csv" separator=";"
 			tableName="employee_sales_summary" />
+	</changeSet>
+	<changeSet id="20170109131407-4" author="cnkmym">
+    <loadData encoding="UTF-8"
+      file="config/liquibase/test_data_salesTransactions.csv" separator=";"
+      tableName="sales_transaction" />
 	</changeSet>
 </databaseChangeLog>

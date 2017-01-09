@@ -1,0 +1,29 @@
+<div>
+    <h2 data-translate="reportApp.graph.generalSalesSummary.home.title">Angular-D3 Library Demonstration</h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="text-center">
+      <div ng-switch="vm.isEditMode">
+      <div ng-switch-when="false" class="row">
+        <div ng-switch="vm.isSummaryMode">
+          <h4 ng-switch-when="true">Period : <span>{{vm.fromYear}}/{{vm.formatNumber(vm.fromMonth)}}</span> ~ <span>{{vm.toYear}}/{{vm.formatNumber(vm.toMonth)}}&nbsp;&nbsp;</span>
+            <button type="button" class="btn btn-default" ng-click="vm.enterEditMode()">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span data-translate="entity.action.edit">Edit</span>
+            </button>
+          </h4>
+          <h4 ng-switch-when="false">Detail Transaction Summary within : <span>{{vm.detailYearMonth}}</span>
+            <button type="button" class="btn btn-default" ng-click="vm.updatePeriod()">
+                <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back">Return</span>
+            </button>
+          </h4>
+        </div>
+      </div>
+      <div ng-switch-when="true" class="row">
+        <h4>Period : <input type="number" ng-model="vm.fromYear" style="width:80px"/>/<input type="number" ng-model="vm.fromMonth" style="width:40px"/></span> ~ <span><input type="number" ng-model="vm.toYear" style="width:80px"/>/<input type="number" ng-model="vm.toMonth" style="width:40px"/>&nbsp;&nbsp;</span>
+          <button type="button" class="btn btn-default" ng-click="vm.updatePeriod()">
+              <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+          </button>
+        </h4>
+      </div>
+    <nvd3 options='vm.graphOptions' data='vm.graphData'></nvd3>
+</div>

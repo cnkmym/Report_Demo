@@ -9,7 +9,7 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('nvd3-demomySuffix', {
+        .state('nvd3-demo-graph', {
             parent: 'graph',
             url: '/graph/nvd3-demo',
             data: {
@@ -27,7 +27,7 @@
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('nvd3Demo');
+                    $translatePartialLoader.addPart('graph');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]

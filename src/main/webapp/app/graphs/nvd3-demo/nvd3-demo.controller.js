@@ -5,9 +5,9 @@
         .module('reportApp')
         .controller('Nvd3DemoController', Nvd3DemoController);
 
-    Nvd3DemoController.$inject = ['$scope', '$state', 'Nvd3Demo', 'ParseLinks', 'AlertService'];
+    Nvd3DemoController.$inject = ['$scope', '$state', 'ParseLinks', 'AlertService'];
 
-    function Nvd3DemoController ($scope, $state, Nvd3Demo, ParseLinks, AlertService) {
+    function Nvd3DemoController ($scope, $state, ParseLinks, AlertService) {
         var vm = this;
 
         loadAll();
@@ -58,24 +58,6 @@
         }
 
         function loadAll () {
-            /**
-            Nvd3Demo.query({
-                fromYear: 2016,
-                fromMonth: 10,
-                toYear:2017,
-                toMonth:3
-            }, onSuccess, onError);
-            function onSuccess(data, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
-                vm.totalItems = headers('X-Total-Count');
-                vm.queryCount = vm.totalItems;
-                vm.productSalesSummaries = data;
-                vm.page = pagingParams.page;
-            }
-            function onError(error) {
-                AlertService.error(error.data.message);
-            }
-            */
             vm.graphOptions = defaultGraphOption();
             vm.graphData = defaultGraphData();
         }

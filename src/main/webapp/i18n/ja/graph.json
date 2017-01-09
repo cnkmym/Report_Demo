@@ -5,6 +5,11 @@
         "home": {
           "title": "Angular-D3 Demonstration"
         }
+      },
+      "generalSalesSummary": {
+        "home": {
+          "title": "General Sales Summary Report"
+        }
       }
     }
   }
