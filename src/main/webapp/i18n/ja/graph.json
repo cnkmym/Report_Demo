@@ -10,6 +10,11 @@
         "home": {
           "title": "General Sales Summary Report"
         }
+      },
+      "employeeSalesSummary": {
+        "home": {
+          "title": "Employee Sales Summary Report"
+        }
       }
     }
   }

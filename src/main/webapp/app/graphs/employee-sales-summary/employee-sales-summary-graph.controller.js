@@ -3,11 +3,11 @@
 
     angular
         .module('reportApp')
-        .controller('GeneralSalesSummaryGraphController', GeneralSalesSummaryGraphController);
+        .controller('EmployeeSalesSummaryGraphController', EmployeeSalesSummaryGraphController);
 
-    GeneralSalesSummaryGraphController.$inject = ['$scope', '$state', 'GeneralSalesSummary', 'ParseLinks', 'AlertService'];
+    EmployeeSalesSummaryGraphController.$inject = ['$scope', '$state', 'EmployeeSalesSummary', 'ParseLinks', 'AlertService'];
 
-    function GeneralSalesSummaryGraphController ($scope, $state, GeneralSalesSummary, ParseLinks, AlertService) {
+    function EmployeeSalesSummaryGraphController ($scope, $state, EmployeeSalesSummary, ParseLinks, AlertService) {
         var vm = this;
         vm.fromYear = 2016;
         vm.fromMonth = 10;
@@ -31,13 +31,15 @@
 
         updatePeriod();
 
-        function showSalesTransactionList(generalSalesSummary){
-          if (generalSalesSummary !== null && generalSalesSummary.id !== null){
+        function showSalesTransactionList(salesSummary){
+          if (salesSummary !== null && salesSummary.id !== null){
             //update title
             vm.isSummaryMode = false;
-            vm.detailYearMonth = generalSalesSummary.label;
+            vm.detailYearMonth = salesSummary.label;
+            vm.detailEmployeeName = salesSummary.employeeName;
+            vm.detailEmployeeColor = salesSummary.color;
             //get data
-            loadDetail(generalSalesSummary.id);
+            loadDetail(salesSummary.id);
             //
           }
         }
@@ -75,10 +77,11 @@
               return angular.merge({},defaultDetailGraphOption(),
                 {
                 chart: {
+                  type:'multiBarChart',
                   xAxis: {
                       axisLabel: 'Date'
                   },
-                  discretebar: {
+                  multibar: {
                     dispatch: {
                       elementClick: function(e) {
                         showSalesTransactionList(e.data);
@@ -95,34 +98,59 @@
 
           vm.formatNumber = formatNumber;
 
+          var colorMap = ["#d62728","#1f77b4","#51A351"];
+
+          function fillEmptyMonthlySales(){
+            var cache = {};
+            var startY = vm.fromYear;
+            var startM = vm.fromMonth;
+            while ((startY<vm.toYear) || (startY == vm.toYear && startM <= vm.toMonth)){
+              if (startM >= 13){
+                startM = 1;
+                startY ++;
+                continue;
+              }
+              var key = startY + "/" + formatNumber(startM);
+              cache[key] = {label:key, value:0};
+              startM ++;
+            }
+            return cache;
+          }
+
           function composeSummaryDisplayData(data){
             var ret = [];
             //compose message
-            angular.forEach(data,function(item){
-              var label = item.year + "/" + formatNumber(item.month);
-              var value = item.totalAmount;
-              ret.push({"label":label,"value":value, "id":item.id});
+            angular.forEach(data,function(item,index){
+              var array = [];
+              var key = item.employeeName;
+              var employeeId = item.id;
+              var color = colorMap[index];
+              var value = fillEmptyMonthlySales();
+              angular.forEach(item.value,function(item){
+                var label = item.year + "/" + formatNumber(item.month);
+                value[label].value = value[label].value + item.totalAmount;
+                value[label].id = item.id;
+                value[label].employeeName = key;
+                value[label].color = color;
+              });
+              for (var i in value){
+                array.push(value[i]);
+              }
+              ret.push({"key":key,"color":color, "employeeId":employeeId,"values":array});
             })
-            //sort
-            ret.sort(function(a,b){
-              return a.label.localeCompare(b.label);
-            });
             //return
             return ret;
           }
 
           function loadSummary () {
-              GeneralSalesSummary.search({
+              EmployeeSalesSummary.search({
                   fromYear: vm.fromYear,
                   fromMonth: vm.fromMonth,
                   toYear:vm.toYear,
                   toMonth:vm.toMonth
               }, onSuccess, onError);
               function onSuccess(data, headers) {
-                  vm.graphData = [{
-                      key: "Cumulative Return",
-                      values: composeSummaryDisplayData(data)
-                  }];
+                  vm.graphData = composeSummaryDisplayData(data);
               }
               function onError(error) {
                   vm.graphData = [];
@@ -176,9 +204,9 @@
             return ret;
           }
 
-          function loadDetail (generalSummaryId) {
-              GeneralSalesSummary.detail({
-                  id: generalSummaryId
+          function loadDetail (employeeSummaryId) {
+              EmployeeSalesSummary.detail({
+                  id: employeeSummaryId
               }, onSuccess, onError);
               function onSuccess(data, headers) {
                   vm.graphData = [{

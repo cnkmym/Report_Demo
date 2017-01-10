@@ -20,7 +20,28 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'search': {
+              url: 'api/sales-summaries/employee/search',
+              method: 'GET',
+              isArray: true,
+              transformResponse: function (data) {
+                  var ret = [];
+                  if (data) {
+                    var json = angular.fromJson(data);
+                    for (var i in json){
+                        var item = angular.fromJson(i);
+                        item.value = json[i];
+                        ret.push(item);
+                    }
+                  }
+                  return ret;
+              }
+            },
+            'detail':{
+              url: 'api/sales-summaries/employee/detail/:id',
+              method: 'GET',
+              isArray: true
+            }
         });
     }
 })();

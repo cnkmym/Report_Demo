@@ -8,7 +8,8 @@
       "graphs": {
         "main": "Graphical Report",
         "nvd3-demo-graph": "Graph Demo",
-        "general-sales-summary-graph" : "General Sales"
+        "general-sales-summary-graph" : "General Sales",
+        "employee-sales-summary-graph" : "Employee Sales"
       },
       "entities": {
         "main": "エンティティ",

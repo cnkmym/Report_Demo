@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bayer.service.GeneralSalesSummaryService;
 import com.bayer.service.dto.GeneralSalesSummaryDTO;
 import com.bayer.service.dto.SalesTransactionDTO;
-import com.bayer.service.mapper.GeneralSalesSummaryMapper;
 import com.bayer.web.rest.util.PaginationUtil;
 import com.codahale.metrics.annotation.Timed;
 
@@ -39,9 +38,6 @@ public class GeneralSalesSummaryResource {
         
     @Inject
     private GeneralSalesSummaryService generalSalesSummaryService;
-
-    @Inject
-    private GeneralSalesSummaryMapper generalSalesSummaryMapper;
 
     /**
      * GET  /general-sales-summaries : get all the generalSalesSummaries.
